@@ -11,7 +11,6 @@
 (defn read-and-parse [starting-vals] (with-open [rdr (reader "day1/input.txt")]
       (reduce mysum starting-vals (line-seq rdr))))
 
-; {:sum 0 :seen []}
 (defn solpart2 [val]
   (if (number? val)
     val
