@@ -17,4 +17,7 @@
     (solpart2 (read-and-parse val))
     ))
 
-(solpart2 {:sum 0 :seen #{}})
+(defn solvepart2 []
+  (solpart2 {:sum 0 :seen #{}}))
+
+; solution 256
