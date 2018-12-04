@@ -1,4 +1,5 @@
-(ns aocd2p2)
+(ns day2.part2
+  (:require [clojure.string :as str :refer :all]))
 
 (use 'clojure.java.io)
 
@@ -10,16 +11,13 @@
    (= 1)
    ))
 
-(use '[clojure.string :only [index-of]])
-
 (defn get-common-chars [str1 str2]
   ; just training my use of as->
-  (as-> (fn [char] (index-of str1 char)) val
+  (as-> (fn [char] (str/index-of str1 char)) val
     (filter val str2)
     (apply str val)))
 
-(get-common-chars "bbbbced" "bbasdb")
-
+; checks current against all of the elements in "others" successively
 (defn check-all-for-one [current others]
   (when-not (empty? others)
     (let [candidate (first others)]

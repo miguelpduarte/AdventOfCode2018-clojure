@@ -1,4 +1,4 @@
-(ns aocd2p1)
+(ns day2.part1)
 
 (use 'clojure.java.io)
 

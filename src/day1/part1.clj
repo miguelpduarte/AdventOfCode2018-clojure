@@ -1,3 +1,5 @@
+(ns day1.part1)
+
 ; dont judge for the file hacks pls lol
 (use 'clojure.java.io)
 
