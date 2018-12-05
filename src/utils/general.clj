@@ -10,3 +10,8 @@
 ; sadly not baked into clojure
 (defn parse-int [s]
   (Integer/parseInt (re-find #"\A-?\d+" s)))
+
+(defn val-in-range [val rangelow rangehigh]
+  "True if val is inside the given range, false otherwise (inclusive)"
+  (and (>= val rangelow)
+       (<= val rangehigh)))

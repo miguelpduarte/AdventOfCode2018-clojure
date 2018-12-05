@@ -1,8 +1,6 @@
 (ns day3.part1
   (:require [utils.general :as utils]))
 
-(utils/parse-int "123")
-
 (def dimensions_regexp #"^#(?<id>\d+) @ (?<left>\d+),(?<top>\d+): (?<width>\d+)x(?<height>\d+)$")
 
 (defn parse-claim [str]
