@@ -34,7 +34,7 @@
         (cross-and-check (rest lines))))))
 
 (defn read-input [func]
-  (with-open [rdr (reader "day2/input.txt")]
+  (with-open [rdr (reader "src/day2/input.txt")]
     (let [lines (line-seq rdr)]
          (func lines))))
 

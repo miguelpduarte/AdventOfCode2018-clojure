@@ -10,7 +10,7 @@
       {:sum newsum :seen (conj (curr :seen) newsum)})))
 
 
-(defn read-and-parse [starting-vals] (with-open [rdr (reader "day1/input.txt")]
+(defn read-and-parse [starting-vals] (with-open [rdr (reader "src/day1/input.txt")]
       (reduce mysum starting-vals (line-seq rdr))))
 
 (defn solpart2 [val]

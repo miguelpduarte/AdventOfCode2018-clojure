@@ -29,7 +29,7 @@
   )
 
 (defn read-input [func start-val]
-  (with-open [rdr (reader "day2/input.txt")]
+  (with-open [rdr (reader "src/day2/input.txt")]
     (reduce func start-val (line-seq rdr))))
 
 (defn solvepart1 []
