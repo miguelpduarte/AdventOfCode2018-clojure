@@ -27,6 +27,15 @@
       str
       (recur (clj.str/replace str toremove "")))))
 
+(defn remove-with-re [str]
+  (clj.str/replace str #"aA|Aa|bB|Bb|cC|Cc|dD|Dd|eE|Ee|fF|Ff|gG|Gg|hH|Hh|iI|Ii|jJ|Jj|kK|Kk|lL|Ll|mM|Mm|nN|Nn|oO|Oo|pP|Pp|qQ|Qq|rR|Rr|sS|Ss|tT|Tt|uU|Uu|vV|Vv|wW|Ww|xX|Xx|yY|Yy|zZ|Zz" ""))
+
+(defn re-naive [str]
+  (let [newstr (remove-with-re str)]
+    (if (= str newstr)
+      str
+      (recur newstr))))
+
 (defn generate-all-without-one-type [str]
   "Returns a vector of all polymers with one type removed (all strings without one character - both upper and lower case)"
   (let [unique-chars-in-str (into #{} str)]
@@ -63,6 +72,28 @@
     (apply min input)
     ))
 
+(defn solvepart2withcutbefore []
+  (as->
+   (utils/read-input (fn [acc curr] (conj acc curr)) [] "src/day5/input.txt") input
+    ; expecting only one string in the input
+    (first input)
+    (naive input)
+    (generate-all-without-one-type input)
+    (mapv naive input)
+    (mapv count input)
+    (apply min input)))
+
+(defn solvepart2v2 []
+  (as->
+   (utils/read-input (fn [acc curr] (conj acc curr)) [] "src/day5/input.txt") input
+    ; expecting only one string in the input
+    (first input)
+    ; (re-naive input)
+    (generate-all-without-one-type input)
+    (map re-naive input)
+    (map count input)
+    (apply min input)))
+
 ; solution: 6874
 
 ;Interesting tests (all timed using "time"):
@@ -75,3 +106,13 @@
 ; time with map: "Elapsed time: 45575.522766 msecs"
 ; time with mapv: "Elapsed time: 45465.739832 msecs"
 ; time with pmap: "Elapsed time: 16123.127072 msecs"
+;;;;;;
+; Final solution with cut before (actual input):
+; time with map: "Elapsed time: 5433.901875 msecs"
+; time with mapv: "Elapsed time: 5474.966432 msecs"
+; time with pmap: "Elapsed time: 5091.002632 msecs"
+;;;;;;
+; v2:
+; time with map: "Elapsed time: 69278.965242 msecs"
+; time with mapv: 
+; time with pmap: 

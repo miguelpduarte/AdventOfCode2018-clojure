@@ -27,6 +27,15 @@
       str
       (recur (clj.str/replace str toremove "")))))
 
+(defn remove-with-re [str]
+  (clj.str/replace str #"aA|Aa|bB|Bb|cC|Cc|dD|Dd|eE|Ee|fF|Ff|gG|Gg|hH|Hh|iI|Ii|jJ|Jj|kK|Kk|lL|Ll|mM|Mm|nN|Nn|oO|Oo|pP|Pp|qQ|Qq|rR|Rr|sS|Ss|tT|Tt|uU|Uu|vV|Vv|wW|Ww|xX|Xx|yY|Yy|zZ|Zz" ""))
+
+(defn re-naive [str]
+  (let [newstr (remove-with-re str)]
+    (if (= str newstr)
+      str
+      (recur newstr))))
+
 (defn testpart1 []
   (naive test-polymer))
 
@@ -40,3 +49,15 @@
    ))
 
 ; solution: 10878
+
+;times:
+; v1: "Elapsed time: 1472.221379 msecs"
+; v2: "Elapsed time: 2461.25008 msecs"
+
+(defn solvepart1v2 []
+  (->
+;   expecting only a string
+   (utils/read-input (fn [acc curr] (conj acc curr)) [] "src/day5/input.txt")
+   (first)
+   (re-naive)
+   (count)))
