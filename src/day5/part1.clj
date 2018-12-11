@@ -41,14 +41,22 @@
 
 (defn solvepart1 []
   (->
-;   expecting only a string
+   ; expecting only a string
    (utils/read-input (fn [acc curr] (conj acc curr)) [] "src/day5/input.txt")
+   (first)
+   (naive)
+   (count)))
+
+; solution: 10878
+
+(defn solvepart1angelo []
+  (->
+   ; expecting only a string
+   (utils/read-input (fn [acc curr] (conj acc curr)) [] "src/day5/input_angelo.txt")
    (first)
    (naive)
    (count)
    ))
-
-; solution: 10878
 
 ;times:
 ; v1: "Elapsed time: 1472.221379 msecs"
